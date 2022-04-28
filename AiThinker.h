@@ -46,15 +46,17 @@ public:
 		init_desk = *init;
 	}
 
-	bool FindShortestPass(Desk& d, int& passlen, int temp_pathlen, int fromx, int fromy, int tox, int toy) {
+	bool FindPass(Desk& d, int& passlen, int temp_pathlen, int fromx, int fromy, int tox, int toy) {
 
 		if (!init_desk.canMove(fromx, fromy)) {
 			return false;
 		}
 
-		if (d.field[fromy][fromx].pass) return false;
+		Cell* current = d.getCell(fromy, fromx);
 
-		d.field[fromy][fromx].pass = true;
+		if (current->pass) return false;
+
+		current->pass = true;
 
 		if (fromx == tox && fromy == toy) {
 			passlen = temp_pathlen;
@@ -63,20 +65,20 @@ public:
 			return true;
 		}
 
-		if (FindShortestPass(d, passlen, temp_pathlen + 1, fromx + 1, fromy, tox, toy)) {
-			d.field[fromy][fromx].pass = false;
+		if (FindPass(d, passlen, temp_pathlen + 1, fromx + 1, fromy, tox, toy)) {
+			current->pass = true;
 			return true;
 		}
-		if (FindShortestPass(d, passlen, temp_pathlen + 1, fromx - 1, fromy, tox, toy)) {
-			d.field[fromy][fromx].pass = false;
+		if (FindPass(d, passlen, temp_pathlen + 1, fromx, fromy+1, tox, toy)) {
+			current->pass = true;
 			return true;
 		}
-		if (FindShortestPass(d, passlen, temp_pathlen + 1, fromx, fromy + 1, tox, toy)) {
-			d.field[fromy][fromx].pass = false;
+		if (FindPass(d, passlen, temp_pathlen + 1, fromx-1, fromy, tox, toy)) {
+			current->pass = true;
 			return true;
 		}
-		if (FindShortestPass(d, passlen, temp_pathlen + 1, fromx, fromy - 1, tox, toy)) {
-			d.field[fromy][fromx].pass = false;
+		if (FindPass(d, passlen, temp_pathlen + 1, fromx, fromy - 1, tox, toy)) {
+			current->pass = true;
 			return true;
 		};
 
@@ -86,7 +88,7 @@ public:
 	
 	double getAiRang(Desk& desk) {
 		double waysfound = 0;
-		double passlen = 1./20;
+		double passlen = 1000;
 
 		for (int y = 0; y < 8; y++) {
 			for (int x = 0; x < 8; x++) {
@@ -96,15 +98,17 @@ public:
 							for (int tx = 5; tx < 8; tx++) {
 								if (desk.getCell(tx, ty)->type == FREE_CELL) {
 									int t_passlen = 0;
-									if (FindShortestPass(desk, t_passlen, 0, x, y, tx, ty)) {
-										passlen = t_passlen;
-										waysfound++;
+									if (FindPass(desk, t_passlen, 0, x, y, tx, ty)) {
+										if (passlen > t_passlen) {
+											passlen = t_passlen;
+											waysfound++;
+										}
 									
 									}
 								}
 							}
 						}
-						}
+					}
 				}
 			}
 		}
