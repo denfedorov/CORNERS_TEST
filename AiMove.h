@@ -10,7 +10,10 @@ public:
 	double rang;
 
 	Move(void) {
-
+		from_x=0;
+		from_y=0;
+		to_x=0;
+		to_y=0;
 	}
 
 	Move(int f_x, int f_y, int t_x, int t_y) {

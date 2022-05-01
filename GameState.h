@@ -2,7 +2,8 @@
 //Общий класс описания состояния игры
 
 #include "common.h"
-#include "allegro_headers.h"
+#include "engineheaders.h"
+#include "GameLogicData.h"
 
 typedef enum { NULLSCREEEN, MAIN_SCREEN, BASEGAME_SCREEN, AI_TURN_SCREEEN } StateType;
 

@@ -9,7 +9,7 @@
 
 int main(int argc, char** argv)
 {
-    UgolkiGame game;
+    Game game;
     game.systemGo();
     
     
