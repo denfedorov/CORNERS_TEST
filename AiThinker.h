@@ -3,7 +3,7 @@
 #include "GameLogicBase.h"
 #include <array>
 
-//Класс отвечающий за игру ИИ
+//РљР»Р°СЃСЃ РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° РёРіСЂСѓ РР
 
 class AiThinker {
 
@@ -18,10 +18,22 @@ public:
 	void generateAiMoves(void);
 
 	AiThinker(Desk* init);
+	void generateAiMoves(void); 
 
 	bool FindPass(Desk& d, int& passlen, int temp_pathlen, int fromx, int fromy, int tox, int toy);
 	
 	double getAiRang(Desk& desk);
+
+	void calcRangOfMoves(void);
+	void sortMovesByRank(void);
+
+	bool OptimizeAiTurn(void);
+
+	void makeBestMove();
+
+	void Think(void) {
+
+	void generateAiMoves();
 
 	void calcRangOfMoves(void);
 	void sortMovesByRank(void);
