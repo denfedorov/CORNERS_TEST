@@ -30,15 +30,6 @@
     <ClInclude Include="Game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="allegro_headers.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="common.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="common.c">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -63,9 +54,45 @@
     <ClInclude Include="AiMove.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="common.c">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Desk.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sysmain.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AiThinker.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AiTurnGS.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGameGS.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogiBase.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogicBase.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogicData.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScreenGS.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

@@ -188,10 +188,11 @@
     <ClInclude Include="AiMove.h" />
     <ClInclude Include="AiThinker.h" />
     <ClInclude Include="AITurnGS.h" />
-    <ClInclude Include="allegro_headers.h" />
     <ClInclude Include="BaseGameGS.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="common.c" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="Desk.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameLogicBase.h" />
@@ -203,7 +204,15 @@
     <ClInclude Include="engineheaders.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AiThinker.cpp" />
+    <ClCompile Include="AiTurnGS.cpp" />
+    <ClCompile Include="BaseGameGS.cpp" />
+    <ClCompile Include="GameLogiBase.cpp" />
+    <ClCompile Include="GameLogicBase.cpp" />
+    <ClCompile Include="GameLogicData.cpp" />
+    <ClCompile Include="MainScreenGS.cpp" />
     <ClCompile Include="sysmain.cpp" />
+    <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ugolki2.rc" />

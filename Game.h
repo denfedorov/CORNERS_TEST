@@ -1,7 +1,7 @@
 #pragma once
 
 #include "common.h"
-#include "allegro_headers.h"
+#include "engineheaders.h"
 
 #include "GameLogicData.h"
 #include "GameState.h"
@@ -13,7 +13,7 @@
 
 typedef map<StateType, GameState*> GameStateMap;
 
-class UgolkiGame {
+class Game {
 private:
 	ALLEGRO_DISPLAY* display;
 	ALLEGRO_BITMAP* icon1;
@@ -53,14 +53,14 @@ public:
 	
 	GameLogicData gamedata;
 
-	UgolkiGame(void) {
+	 Game(void) {
 		first_time = true;
 		systemInit();
 		gameLogicInit();
 		first_time = false;
 	}
 
-	~UgolkiGame(void) {
+	~Game(void) {
 		gameLogicShutdown();
 		sytemShutdown();
 	}
@@ -70,7 +70,7 @@ public:
 	}
 };
 
-void UgolkiGame::gameLogicInit(void) {
+void Game::gameLogicInit(void) {
 
 	main_screenGS = new MainScreenGS();
 	base_gameGS = new BaseGameGS();
@@ -85,13 +85,13 @@ void UgolkiGame::gameLogicInit(void) {
 	states[currState]->Enter(display, gamedata);
 }
 
-void UgolkiGame::gameLogicShutdown(void) {
+void Game::gameLogicShutdown(void) {
 	delete main_screenGS;
 	delete base_gameGS;
 	delete ai_turnGS;
 }
 
-void UgolkiGame::displayInit(bool _fullscreen) {
+void Game::displayInit(bool _fullscreen) {
 
 	al_stop_timer(timer);
 
@@ -136,7 +136,7 @@ void UgolkiGame::displayInit(bool _fullscreen) {
 
 }
 
-void UgolkiGame::procesState(ALLEGRO_EVENT& event) {
+void Game::procesState(ALLEGRO_EVENT& event) {
 	StateType prevState= currState;
 
 	currState = states[prevState]->processEvent(event,this->gamedata);
@@ -149,7 +149,7 @@ void UgolkiGame::procesState(ALLEGRO_EVENT& event) {
 }
 
 
-bool UgolkiGame::systemContinue(){
+bool Game::systemContinue(){
 	
 	ALLEGRO_EVENT event;
 	al_wait_for_event(queue, &event);
@@ -185,14 +185,14 @@ bool UgolkiGame::systemContinue(){
 	return false;
 }
 
-void UgolkiGame::sytemShutdown() {
+void Game::sytemShutdown() {
 
 	al_destroy_bitmap(icon1);
 	al_destroy_timer(timer);
 	al_uninstall_system();
 }
 
-void UgolkiGame::systemInit() {
+void Game::systemInit() {
 
 	fullscreen = false;
 	display = NULL;
