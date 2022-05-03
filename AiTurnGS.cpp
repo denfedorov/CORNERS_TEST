@@ -32,8 +32,8 @@ void AITurnGS::AiTurn(GameLogicData& gdata) {
 	gdata.saveDesk();
 }
 
-void AITurnGS::Enter(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
-	Draw(display, gdata);
+void AITurnGS::Enter(System &sys, GameLogicData& gdata) {
+	Draw(sys, gdata);
 
 	AiTurn(gdata);
 
@@ -41,11 +41,11 @@ void AITurnGS::Enter(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
 	al_flip_display();
 }
 
-void AITurnGS::Leave(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
+void AITurnGS::Leave(System& sys, GameLogicData& gdata) {
 
 };
 
-void AITurnGS::Draw(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
+void AITurnGS::Draw(System& sys, GameLogicData& gdata) {
 
 	al_draw_bitmap(wait_b, 480 + 10, 480 - 200, 0);
 	al_flip_display();

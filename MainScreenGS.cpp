@@ -25,17 +25,17 @@ void MainScreenGS::Unload() {
 	al_destroy_font(font_gui);
 };
 
-void MainScreenGS::Enter(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
+void MainScreenGS::Enter(System &sys, GameLogicData& gdata) {
 	NeedRedraw();
 }
-void MainScreenGS::Leave(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
+void MainScreenGS::Leave(System& sys, GameLogicData& gdata) {
 
 };
 
-void MainScreenGS::Draw(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
+void MainScreenGS::Draw(System& sys, GameLogicData& gdata) {
 
 
-	al_set_target_backbuffer(display);
+	al_set_target_backbuffer(sys.display);
 	al_clear_to_color(blackColor);
 
 	al_draw_bitmap(joystick_b, 10, 10, 0);

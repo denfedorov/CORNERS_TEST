@@ -200,6 +200,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="MainScreenGS.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="System.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="engineheaders.h" />
   </ItemGroup>
