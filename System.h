@@ -5,14 +5,15 @@ class System
 {
 public:
 
-	ALLEGRO_AUDIO_STREAM* stream;
+	ALLEGRO_MIXER* mixer;
+	ALLEGRO_VOICE* mainchannel;
 	ALLEGRO_DISPLAY* display;
 	ALLEGRO_EVENT_QUEUE* queue;
 
 	System(void){
 		display = NULL;
 		queue = NULL;
-		stream = NULL;
+		mixer = NULL;
 	}
 
 };

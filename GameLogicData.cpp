@@ -1,5 +1,6 @@
 #pragma once
 #include "GameLogicData.h"
+#include "engineheaders.h"
 
 void GameLogicData::saveDesk(void) {
 	gameHistory.push(new Desk(currDesk));

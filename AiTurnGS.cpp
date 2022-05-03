@@ -1,9 +1,9 @@
 #include "GameLogicData.h"
 #include "AITurnGS.h"
 
-AITurnGS::AITurnGS(void) {
+AITurnGS::AITurnGS(System &sys) {
 	setType(AI_TURN_SCREEEN);
-	Load();
+	Load(sys);
 }
 
 AITurnGS::~AITurnGS(void) {
@@ -14,7 +14,7 @@ StateType  AITurnGS::processEvent(ALLEGRO_EVENT& event, GameLogicData& gdata) {
 	return BASEGAME_SCREEN;
 };
 
-void AITurnGS::Load(void) {
+void AITurnGS::Load(System &sys) {
 	blackColor = al_map_rgb(0, 0, 0);
 	wait_b = al_load_bitmap("data/wait.png");
 };

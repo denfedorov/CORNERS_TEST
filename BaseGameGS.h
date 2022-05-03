@@ -9,8 +9,13 @@
 
 class BaseGameGS : public GameState {
 private:
+
 	ALLEGRO_FONT* font_gui;
 	ALLEGRO_BITMAP* desk_b;
+
+
+	ALLEGRO_SAMPLE* put_sound;
+	ALLEGRO_SAMPLE_INSTANCE* putsound_inst;
 
 	ALLEGRO_COLOR blackColor;
 	ALLEGRO_COLOR whiteColor;
@@ -26,7 +31,7 @@ private:
 	bool ai_wins = false;
 
 public:
-	BaseGameGS(void);
+	BaseGameGS(System &sys);
 	~BaseGameGS(void);
 
 	void deskMouseDown(GameLogicData& gdata, int screenx, int screeny);
@@ -36,7 +41,7 @@ public:
 
 	StateType  processEvent(ALLEGRO_EVENT& event, GameLogicData& gdata);
 	
-	void Load();
+	void Load(System& sys);
 	
 	void Unload();
 

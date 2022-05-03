@@ -2,9 +2,9 @@
 
 void Game::gameLogicInit(void) {
 
-	main_screenGS = new MainScreenGS();
-	base_gameGS = new BaseGameGS();
-	ai_turnGS = new AITurnGS();
+	main_screenGS = new MainScreenGS(sys);
+	base_gameGS = new BaseGameGS(sys);
+	ai_turnGS = new AITurnGS(sys);
 
 	currState = StateType::MAIN_SCREEN;
 
@@ -119,6 +119,13 @@ void Game::sytemShutdown() {
 
 	al_destroy_bitmap(icon1);
 	al_destroy_timer(timer);
+
+	al_destroy_sample_instance(greetssound_inst);
+	al_destroy_sample(greets_sound);
+
+	al_destroy_mixer(sys.mixer);
+	al_destroy_voice(sys.mainchannel);
+
 	al_uninstall_system();
 }
 
@@ -132,14 +139,31 @@ void Game::systemInit() {
 	}
 	al_init_primitives_addon();
 	al_init_font_addon();
+	al_init_acodec_addon();
 	al_init_ttf_addon();
 	al_init_image_addon();
 	al_install_mouse();
 	al_install_keyboard();
+	if (!al_install_audio()) {
+		abort_example("Could not init sound!\n");
+	}
+
 	init_platform_specific();
 
-	if (!al_install_audio()) {
-		abort_example("Could not init sound.\n");
+	sys.mixer = al_create_mixer(44100, ALLEGRO_AUDIO_DEPTH_FLOAT32,
+		ALLEGRO_CHANNEL_CONF_2);
+	if (!sys.mixer) {
+		abort_example("al_create_mixer failed.\n");
+	}
+
+	sys.mainchannel = al_create_voice(44100, ALLEGRO_AUDIO_DEPTH_INT16,
+		ALLEGRO_CHANNEL_CONF_2);
+	if (!sys.mainchannel) {
+		abort_example("Could not create ALLEGRO_VOICE from sample\n");
+	}
+
+	if (!al_attach_mixer_to_voice(sys.mixer, sys.mainchannel)) {
+		abort_example("al_attach_mixer_to_voice failed.\n");
 	}
 
 	//Init resources
@@ -149,6 +173,16 @@ void Game::systemInit() {
 		abort_example("icon.tga not found\n");
 	}
 
+	greets_sound = al_load_sample("data/greets.wav");
+	if (!greets_sound) {
+		abort_example("Could not load sample from '%s'!\n",
+			"turn.mp3");
+	}
+	else {
+		greetssound_inst = al_create_sample_instance(greets_sound);
+		al_attach_sample_instance_to_mixer(greetssound_inst, sys.mixer);
+	}
+	
 
 	timer = al_create_timer(1.0 / 10.0);
 

@@ -1,8 +1,8 @@
 #include "BaseGameGS.h"
 
-BaseGameGS::BaseGameGS(void) {
+BaseGameGS::BaseGameGS(System &sys) {
 	setType(BASEGAME_SCREEN);
-	Load();
+	Load(sys);
 }
 
 BaseGameGS::~BaseGameGS(void) {
@@ -37,7 +37,11 @@ bool BaseGameGS::someoneWin(void) {
 
 bool BaseGameGS::desckMouseUp(GameLogicData& gdata) {
 	if (gdata.findPlayerMoveIndexes()) {
+
+		al_play_sample_instance(putsound_inst);
+		
 		gdata.PlayerMove();
+
 		return true;
 	}
 	return false;
@@ -96,7 +100,7 @@ StateType  BaseGameGS::processEvent(ALLEGRO_EVENT& event, GameLogicData& gdata) 
 	return next_gamestate;
 };
 
-void BaseGameGS::Load() {
+void BaseGameGS::Load(System &sys) {
 	blackColor = al_map_rgb(0, 0, 0);
 	whiteColor = al_map_rgb(255, 255, 255);
 	redColor = al_map_rgb(255, 70, 70);
@@ -106,11 +110,25 @@ void BaseGameGS::Load() {
 	desk_b = al_load_bitmap("data/desk.png");
 
 	font_gui = al_load_font("data/MoonLaser.ttf", 18, 0);
+
+	put_sound = al_load_sample("data/turn.wav");
+	if (!put_sound) {
+		abort_example("Could not load sample from '%s'!\n",
+			"turn.mp3");
+	}
+	else {
+		putsound_inst = al_create_sample_instance(put_sound);
+		al_attach_sample_instance_to_mixer(putsound_inst, sys.mixer);
+	}
+
+
 };
 
 void BaseGameGS::Unload() {
 	al_destroy_bitmap(desk_b);
 	al_destroy_font(font_gui);
+	al_destroy_sample_instance(putsound_inst);
+	al_destroy_sample(put_sound);
 };
 
 void BaseGameGS::Enter(System &sys, GameLogicData& gdata) {
