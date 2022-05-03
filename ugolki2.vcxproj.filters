@@ -111,6 +111,12 @@
     <Image Include="ugolki2.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+    <Image Include="data\icon.tga">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\wait.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

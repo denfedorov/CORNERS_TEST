@@ -11,11 +11,11 @@ class AITurnGS : public GameState {
 	ALLEGRO_COLOR blackColor;
 
 public:
-	AITurnGS(void);
+	AITurnGS(System &sys);
 	~AITurnGS(void);
 	StateType  processEvent(ALLEGRO_EVENT &event, GameLogicData& gdata);
 
-	void Load(void);
+	void Load(System &sys);
 	
 	void Unload(void);
 

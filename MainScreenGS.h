@@ -6,6 +6,8 @@
 #include "GameLogicData.h"
 
 class MainScreenGS : public GameState {
+private:
+
 	ALLEGRO_FONT* font_gui;
 	ALLEGRO_BITMAP* joystick_b;
 	ALLEGRO_COLOR blackColor;
@@ -14,10 +16,10 @@ class MainScreenGS : public GameState {
 
 public:
 
-	MainScreenGS(void);
+	MainScreenGS(System &sys);
 	~MainScreenGS(void);
 	StateType  processEvent(ALLEGRO_EVENT& event, GameLogicData& gdata);
-	void Load();
+	void Load(System& sys);
 	void Unload();
 
 	void Enter(System& sys, GameLogicData& gdata);

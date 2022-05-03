@@ -16,7 +16,7 @@ public:
 
 	StateType state_type;
 
-	virtual void Load() {};
+	virtual void Load(System& sys) {};
 	virtual void Unload() {};
 
 	virtual StateType  processEvent(ALLEGRO_EVENT &event, GameLogicData &gdata) { return this->getType(); };

@@ -16,15 +16,16 @@ typedef map<StateType, GameState*> GameStateMap;
 
 class Game {
 private:
-	//ALLEGRO_AUDIO_STREAM* stream;
-	//ALLEGRO_DISPLAY* display;
 
 	System sys;
 
 	ALLEGRO_BITMAP* icon1;
-	//ALLEGRO_EVENT_QUEUE* queue;
+	
+	ALLEGRO_SAMPLE* greets_sound;
+	ALLEGRO_SAMPLE_INSTANCE* greetssound_inst;
+	
 	ALLEGRO_TIMER* timer;
-
+	
 	bool first_time;
 
 	MainScreenGS *main_screenGS;
@@ -71,6 +72,7 @@ public:
 	}
 
 	void systemGo(void) {
+		al_play_sample_instance(greetssound_inst);
 		while (!systemContinue()) {};
 	}
 };

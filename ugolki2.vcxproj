@@ -219,6 +219,8 @@
     <ResourceCompile Include="ugolki2.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="data\icon.tga" />
+    <Image Include="data\wait.png" />
     <Image Include="small.ico" />
     <Image Include="ugolki2.ico" />
   </ItemGroup>

@@ -2,9 +2,9 @@
 #include "GameState.h"
 #include "GameLogicData.h"
 
-MainScreenGS::MainScreenGS(void) {
+MainScreenGS::MainScreenGS(System &sys) {
 	setType(MAIN_SCREEN);
-	Load();
+	Load(sys);
 }
 MainScreenGS::~MainScreenGS(void) {
 	Unload();
@@ -14,13 +14,13 @@ StateType  MainScreenGS::processEvent(ALLEGRO_EVENT& event, GameLogicData& gdata
 	return this->getType();
 };
 
-void MainScreenGS::Load() {
+void MainScreenGS::Load(System &sys) {
 	font_gui = al_load_font("data/MoonLaser.ttf", 24, 0);
 	joystick_b = al_load_bitmap("data/joy.png");
 	blackColor = al_map_rgb(0, 0, 0);
 	whiteColor = al_map_rgb(255, 255, 255);
 };
-void MainScreenGS::Unload() {
+void MainScreenGS::Unload(void) {
 	al_destroy_bitmap(joystick_b);
 	al_destroy_font(font_gui);
 };
