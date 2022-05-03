@@ -113,13 +113,13 @@ void BaseGameGS::Unload() {
 	al_destroy_font(font_gui);
 };
 
-void BaseGameGS::Enter(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
-	Draw(display, gdata);
+void BaseGameGS::Enter(System &sys, GameLogicData& gdata) {
+	Draw(sys, gdata);
 	ai_wins = gdata.currDesk.aiWins();
 	redraw = false;
 }
-void BaseGameGS::Leave(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
-	this->Draw(display, gdata);
+void BaseGameGS::Leave(System &sys, GameLogicData& gdata) {
+	this->Draw(sys, gdata);
 };
 
 void BaseGameGS::DrawCells(GameLogicData& gdata) {
@@ -153,8 +153,8 @@ void BaseGameGS::DrawCells(GameLogicData& gdata) {
 }
 
 
-void BaseGameGS::Draw(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
-	al_set_target_backbuffer(display);
+void BaseGameGS::Draw(System &sys, GameLogicData& gdata) {
+	al_set_target_backbuffer(sys.display);
 	al_clear_to_color(blackColor);
 
 	al_draw_textf(font_gui, whiteColor, 480 + 160 / 2, 50, ALLEGRO_ALIGN_CENTRE, "ESC - Exit");

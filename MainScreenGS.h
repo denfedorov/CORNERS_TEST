@@ -20,10 +20,10 @@ public:
 	void Load();
 	void Unload();
 
-	void Enter(ALLEGRO_DISPLAY* display, GameLogicData& gdata);
-	void Leave(ALLEGRO_DISPLAY* display, GameLogicData& gdata);
+	void Enter(System& sys, GameLogicData& gdata);
+	void Leave(System& sys, GameLogicData& gdata);
 
-	void Draw(ALLEGRO_DISPLAY* display, GameLogicData& gdata);
+	void Draw(System& sys, GameLogicData& gdata);
 
 
 };

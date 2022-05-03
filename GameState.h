@@ -2,6 +2,7 @@
 //Общий класс описания состояния игры
 
 #include "common.h"
+#include "System.h"
 #include "engineheaders.h"
 #include "GameLogicData.h"
 
@@ -18,14 +19,14 @@ public:
 	virtual void Load() {};
 	virtual void Unload() {};
 
-	virtual StateType  processEvent(ALLEGRO_EVENT& event, GameLogicData &gdata) { return this->getType(); };
+	virtual StateType  processEvent(ALLEGRO_EVENT &event, GameLogicData &gdata) { return this->getType(); };
 
-	virtual void Enter(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {
+	virtual void Enter(System  &sys, GameLogicData& gdata) {
 		NeedRedraw();
 	};
-	virtual void Leave(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {};
+	virtual void Leave(System &sys, GameLogicData& gdata) {};
 
-	virtual void Draw(ALLEGRO_DISPLAY* display, GameLogicData& gdata) {};
+	virtual void Draw(System &sys, GameLogicData& gdata) {};
 	
 	void NeedRedraw() {
 		redraw = true;

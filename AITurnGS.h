@@ -13,15 +13,15 @@ class AITurnGS : public GameState {
 public:
 	AITurnGS(void);
 	~AITurnGS(void);
-	StateType  processEvent(ALLEGRO_EVENT& event, GameLogicData& gdata);
+	StateType  processEvent(ALLEGRO_EVENT &event, GameLogicData& gdata);
 
 	void Load(void);
 	
 	void Unload(void);
 
 	void AiTurn(GameLogicData& gdata);
-	void Enter(ALLEGRO_DISPLAY* display, GameLogicData& gdata);
-	void Leave(ALLEGRO_DISPLAY* display, GameLogicData& gdata);
-	void Draw(ALLEGRO_DISPLAY* display, GameLogicData& gdata);
+	void Enter(System& sys, GameLogicData& gdata);
+	void Leave(System& sys, GameLogicData& gdata);
+	void Draw(System& sysy, GameLogicData& gdata);
 
 };
